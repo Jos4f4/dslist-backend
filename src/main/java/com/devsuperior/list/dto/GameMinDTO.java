@@ -1,19 +1,20 @@
 package com.devsuperior.list.dto;
 
 import com.devsuperior.list.entitites.Game;
+import com.devsuperior.list.projections.GameMinProjection;
 
 public class GameMinDTO {
 
 	private Long id;
 	private String title;
-	private String year;
+	private Integer year;
 	private String imgUrl;
 	private String shortDescription;
 	
 	public GameMinDTO() {
 		
 	}
-
+	
 	public GameMinDTO(Game entity) {
 		super();
 		id = entity.getId();
@@ -21,6 +22,15 @@ public class GameMinDTO {
 		year = entity.getYear();
 		imgUrl = entity.getImgUrl();
 		shortDescription = entity.getShortDescription();
+	}
+	
+	public GameMinDTO(GameMinProjection projection) {
+		super();
+		id = projection.getId();
+		title = projection.getTitle();
+		year = projection.getGameYear();
+		imgUrl = projection.getImgUrl();
+		shortDescription = projection.getShortDescription();
 	}
 
 	public Long getId() {
@@ -31,7 +41,7 @@ public class GameMinDTO {
 		return title;
 	}
 
-	public String getYear() {
+	public Integer getYear() {
 		return year;
 	}
 
